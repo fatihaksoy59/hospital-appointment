@@ -20,20 +20,21 @@ public class DepartmentService {
 
     public ResponseEntity<Department> addDepartment(final Department department) {
         departmentRepository.findByDepartmentName(department.getDepartmentName())
-                .ifPresent(ex -> { throw new RecordAlreadyExistException(department.getDepartmentName());});
+                .ifPresent(ex -> {
+                    throw new RecordAlreadyExistException(department.getDepartmentName()); });
 
         return new ResponseEntity<Department>(
                 departmentRepository.save(department), HttpStatus.OK);
     }
 
     public ResponseEntity<List<Department>> getAllDepartments() {
-        return new ResponseEntity<List<Department>>(departmentRepository.findAll(),HttpStatus.OK);
+        return new ResponseEntity<List<Department>>(departmentRepository.findAll(), HttpStatus.OK);
     }
 
-    public HttpStatus deleteDepartment(int id) {
-        Optional<Department> department = departmentRepository.findById(id);
-        if(!department.isPresent()) {
-            throw new RecordNotFoundException(""+id);
+    public HttpStatus deleteDepartment(final int id) {
+        final Optional<Department> department = departmentRepository.findById(id);
+        if (!department.isPresent()) {
+            throw new RecordNotFoundException("" + id);
         }
         departmentRepository.deleteById(id);
         return HttpStatus.OK;
