@@ -16,6 +16,7 @@ public class CustomExceptionHandler {
 
     //TODO make UTC+3 for Instant.now
 
+    //TODO @Email de buraya dusuyor onu coz
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public final ResponseEntity<Object> handleBindingException(
             final MethodArgumentNotValidException ex, final WebRequest request) {
@@ -30,7 +31,7 @@ public class CustomExceptionHandler {
             final RecordAlreadyExistException ex, final WebRequest request) {
         final List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
-        final ErrorResponse error = new ErrorResponse("Record Already Exist", details,Instant.now());
+        final ErrorResponse error = new ErrorResponse("Record Already Exist", details, Instant.now());
         return new ResponseEntity(error, HttpStatus.FOUND);
     }
 
@@ -39,7 +40,7 @@ public class CustomExceptionHandler {
             final RecordNotFoundException ex, final WebRequest request) {
         final List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
-        final ErrorResponse error = new ErrorResponse("Record Not Found ", details,Instant.now());
+        final ErrorResponse error = new ErrorResponse("Record Not Found ", details, Instant.now());
         return new ResponseEntity(error, HttpStatus.NOT_FOUND);
     }
 }

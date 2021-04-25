@@ -11,21 +11,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
 
-
 @RestController
 @RequestMapping(path = "department")
 public class DepartmentController {
 
+    //TODO Is @ResponseBody must ?
     @Autowired
     private DepartmentService departmentService;
 
     @PostMapping
-    public ResponseEntity<Department> addDepartment(@Valid @RequestBody final Department department) {
+    public @ResponseBody ResponseEntity<Department> addDepartment(@Valid @RequestBody final Department department) {
         return departmentService.addDepartment(department);
     }
 
@@ -37,7 +38,7 @@ public class DepartmentController {
 
     //TODO validation for only staff
     @DeleteMapping("{id}")
-    public HttpStatus deleteDepartment(@PathVariable final int id){
+    public HttpStatus deleteDepartment(@PathVariable final int id) {
         return departmentService.deleteDepartment(id);
     }
 }
