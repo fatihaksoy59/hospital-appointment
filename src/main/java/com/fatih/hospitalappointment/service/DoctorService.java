@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,9 +53,9 @@ public class DoctorService {
         final Department department = new Department(id, null);
         final Optional<List<Doctor>> doctors = doctorRepository.findByDepartment(department);
 
-        final List<DoctorDto> doctorDtos =new ArrayList<DoctorDto>();
+        final List<DoctorDto> doctorDtos = new ArrayList<DoctorDto>();
 
-        StringUtil.mergeDoctorTitleNameSurname(doctorRepository.findByDepartment(department).get(),doctorDtos);
+        StringUtil.mergeDoctorTitleNameSurname(doctorRepository.findByDepartment(department).get(), doctorDtos);
 
         return  new ResponseEntity<List<DoctorDto>>(doctorDtos, HttpStatus.OK);
 

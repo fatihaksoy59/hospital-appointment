@@ -9,15 +9,17 @@ import java.util.List;
 @UtilityClass
 public class StringUtil {
 
+    private final String emptyString = " ";
+
     public void mergeDoctorTitleNameSurname(final List<Doctor> doctors, final List<DoctorDto> dto) {
-        doctors.stream().forEach(doctor -> setDTO(doctor,dto));
+        doctors.stream().forEach(doctor -> setDTO(doctor, dto));
     }
 
-    private void setDTO(Doctor doctor, List<DoctorDto> dto) {
+    private void setDTO(final Doctor doctor, final List<DoctorDto> dto) {
         final String fullName = doctor.getDoctorTitle().getTitle()
-                + " " + doctor.getFirstName() + " " + doctor.getLastName();
+                + emptyString + doctor.getFirstName() + emptyString + doctor.getLastName();
 
-        final DoctorDto doctorDto= new DoctorDto();
+        final DoctorDto doctorDto = new DoctorDto();
         doctorDto.setId(doctor.getId());
         doctorDto.setDoctorTitleNameSurname(fullName);
 
