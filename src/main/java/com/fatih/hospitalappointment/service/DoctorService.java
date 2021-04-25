@@ -2,15 +2,20 @@ package com.fatih.hospitalappointment.service;
 
 import com.fatih.hospitalappointment.config.exceptions.RecordAlreadyExistException;
 import com.fatih.hospitalappointment.config.exceptions.RecordNotFoundException;
+import com.fatih.hospitalappointment.model.dto.DoctorDto;
 import com.fatih.hospitalappointment.model.entity.Department;
 import com.fatih.hospitalappointment.model.entity.Doctor;
+import com.fatih.hospitalappointment.model.enums.DoctorTitle;
 import com.fatih.hospitalappointment.repository.DepartmentRepository;
 import com.fatih.hospitalappointment.repository.DoctorRepository;
+import com.fatih.hospitalappointment.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,10 +50,20 @@ public class DoctorService {
         return new ResponseEntity<Doctor>(doctor.get(), HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Doctor>> getDoctorsByDepartmentId(final int id) {
+    public ResponseEntity<List<DoctorDto>> getDoctorsByDepartmentId(final int id) {
         final Department department = new Department(id, null);
         final Optional<List<Doctor>> doctors = doctorRepository.findByDepartment(department);
 
-        return  new ResponseEntity<List<Doctor>>(doctorRepository.findByDepartment(department).get(), HttpStatus.OK);
+        final List<DoctorDto> doctorDtos =new ArrayList<DoctorDto>();
+
+        StringUtil.mergeDoctorTitleNameSurname(doctorRepository.findByDepartment(department).get(),doctorDtos);
+
+        return  new ResponseEntity<List<DoctorDto>>(doctorDtos, HttpStatus.OK);
+
+    }
+
+    public ResponseEntity<List<DoctorTitle>> getDoctorTitles() {
+        //TODO write enum return
+        return null;
     }
 }
