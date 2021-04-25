@@ -8,7 +8,7 @@ public enum DoctorTitle {
     UZM("UZM. DR."),
     OP("OP. DR."),
     DOC("DOÇ. DR."),
-    PROF("PROF. DR. ");
+    PROF("PROF. DR.");
 
     private final String title;
     DoctorTitle(final String doctorTitle) {

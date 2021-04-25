@@ -1,6 +1,8 @@
 package com.fatih.hospitalappointment.controller;
 
+import com.fatih.hospitalappointment.model.dto.DoctorDto;
 import com.fatih.hospitalappointment.model.entity.Doctor;
+import com.fatih.hospitalappointment.model.enums.DoctorTitle;
 import com.fatih.hospitalappointment.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,12 @@ public class DoctorController {
     }
 
     @GetMapping(path = "/getByDepartment/{id}")
-    private ResponseEntity<List<Doctor>> getDoctorsByDepartmentId(@PathVariable final int id) {
+    private ResponseEntity<List<DoctorDto>> getDoctorsByDepartmentId(@PathVariable final int id) {
         return doctorService.getDoctorsByDepartmentId(id);
+    }
+
+    @GetMapping(path = "/getDoctorTitles")
+    private ResponseEntity<List<DoctorTitle>> getDoctorTitles() {
+        return doctorService.getDoctorTitles();
     }
 }
