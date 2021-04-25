@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+
+    <module name="NewlineAtEndOfFile"/>
+
+    <module name="Translation"/>
+
+    <module name="FileLength">
+        <property name="max" value="1000"/>
+    </module>
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="tabWidth" value="4"/>
+    </module>
+
+    <module name="UniqueProperties">
+        <property name="fileExtensions" value="yaml"/>
+    </module>
+
+    <module name="SuppressWarningsFilter" />
+
+    <module name="TreeWalker">
+
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <module name="MethodTypeParameterName"/>
+        <module name="OuterTypeFilename"/>
+        <module name="PackageName"/>
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+        <module name="FinalLocalVariableCheck"/>
+
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport"/>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
+
+        <module name="MethodLength"/>
+        <module name="ParameterNumber">
+            <property name="max" value="12"/>
+        </module>
+
+        <module name="EmptyForInitializerPad"/>
+        <module name="EmptyForIteratorPad"/>
+        <module name="GenericWhitespace"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+
+        <module name="DeclarationOrder"/>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+
+
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="NestedForDepth">
+            <property name="max" value="2"/>
+        </module>
+        <module name="NestedIfDepth">
+            <property name="max" value="2"/>
+        </module>
+        <module name="NestedTryDepth"/>
+        <module name="RightCurly"/>
+        <module name="Indentation">
+            <property name="tabWidth" value="4"/>
+        </module>
+
+        <module name="BooleanExpressionComplexity"/>
+        <module name="CovariantEquals"/>
+        <module name="CyclomaticComplexity">
+            <property name="max" value="7"/>
+        </module>
+        <module name="DefaultComesLast"/>
+        <module name="EmptyStatement"/>
+        <module name="EqualsAvoidNull"/>
+        <module name="EqualsHashCode"/>
+        <module name="ExecutableStatementCount">
+            <property name="max" value="50"/>
+        </module>
+        <module name="FallThrough"/>
+        <module name="HiddenField"/>
+        <module name="IllegalCatch">
+            <property name="illegalClassNames" value="java.lang.Error, java.lang.Throwable, java.lang.RuntimeException"/>
+        </module>
+        <module name="IllegalInstantiation"/>
+        <module name="IllegalThrows"/>
+        <module name="InnerAssignment"/>
+        <module name="JavaNCSS">
+            <property name="methodMaximum" value="150"/>
+            <property name="classMaximum" value="1000"/>
+            <property name="fileMaximum" value="1000"/>
+        </module>
+        <module name="MagicNumber"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="ModifiedControlVariable"/>
+        <module name="MultipleStringLiterals"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="NPathComplexity"/>
+        <module name="NoClone"/>
+        <module name="NoFinalizer"/>
+        <module name="OneStatementPerLine"/>
+        <module name="ReturnCount"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="StringLiteralEquality"/>
+        <module name="SuperClone"/>
+        <module name="SuperFinalize"/>
+
+        <module name="AnonInnerLength">
+            <property name="max" value="10"/>
+        </module>
+        <module name="ClassDataAbstractionCoupling">
+            <property name="excludeClassesRegexps" value=".*Exception$"/>
+        </module>
+        <module name="ClassFanOutComplexity">
+            <property name="max" value="50"/>
+        </module>
+        <module name="ClassTypeParameterName"/>
+        <module name="DesignForExtension">
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="FinalClass"/>
+        <module name="InnerTypeLast"/>
+        <module name="InterfaceIsType"/>
+        <module name="MethodCount">
+            <property name="maxTotal" value="30"/>
+        </module>
+        <module name="MutableException"/>
+        <module name="VisibilityModifier"/>
+
+        <module name="ArrayTypeStyle"/>
+        <module name="FinalParameters"/>
+        <module name="OuterTypeNumber"/>
+        <module name="ParameterAssignment"/>
+        <module name="TodoComment"/>
+        <module name="UpperEll"/>
+        <module name="UnnecessaryParentheses"/>
+
+        <module name="SuppressWarningsHolder" />
+
+        <module name="EmptyLineSeparator">
+            <property name="allowMultipleEmptyLines" value="false"/>
+            <property name="allowNoEmptyLineBetweenFields " value="true"/>
+        </module>
+    </module>
+
+</module>
