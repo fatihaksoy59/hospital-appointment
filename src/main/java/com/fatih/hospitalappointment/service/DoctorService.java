@@ -3,9 +3,13 @@ package com.fatih.hospitalappointment.service;
 import com.fatih.hospitalappointment.config.exceptions.RecordAlreadyExistException;
 import com.fatih.hospitalappointment.config.exceptions.RecordNotFoundException;
 import com.fatih.hospitalappointment.model.dto.DoctorDto;
+import com.fatih.hospitalappointment.model.entity.AppointmentHours;
+import com.fatih.hospitalappointment.model.entity.Appointments;
 import com.fatih.hospitalappointment.model.entity.Department;
 import com.fatih.hospitalappointment.model.entity.Doctor;
 import com.fatih.hospitalappointment.model.enums.DoctorTitle;
+import com.fatih.hospitalappointment.repository.AppointmentHoursRepository;
+import com.fatih.hospitalappointment.repository.AppointmentsRepository;
 import com.fatih.hospitalappointment.repository.DepartmentRepository;
 import com.fatih.hospitalappointment.repository.DoctorRepository;
 import com.fatih.hospitalappointment.util.StringUtil;
@@ -26,6 +30,12 @@ public class DoctorService {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private AppointmentHoursRepository appointmentHoursRepository;
+
+    @Autowired
+    private AppointmentsRepository appointmentsRepository;
 
     public ResponseEntity<Doctor> addDoctor(final Doctor doctor) {
         doctorRepository.findByNationalIdentityNo(doctor.getNationalIdentityNo())
@@ -64,5 +74,17 @@ public class DoctorService {
     public ResponseEntity<List<DoctorTitle>> getDoctorTitles() {
         //TODO write enum return
         return null;
+    }
+
+    public ResponseEntity<List<AppointmentHours>> getDoctorEmptyHours(final int doctorId, final String date) {
+        final List<AppointmentHours> appointmentHoursList = appointmentHoursRepository.findAll();
+        final Optional<List<Appointments>> appointments = appointmentsRepository.
+                findAppointmentsByDoctorIdAndAppointmentDate(doctorId, date);
+
+        final int size = appointments.map(List::size).orElse(0);
+        for (int i = 0; i < size; i++) {
+            appointmentHoursList.remove(appointments.get().get(i).getId() - 1);
+        }
+        return new ResponseEntity<List<AppointmentHours>>(appointmentHoursList, HttpStatus.OK);
     }
 }

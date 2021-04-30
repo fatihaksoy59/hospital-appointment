@@ -30,7 +30,6 @@ public class DepartmentController {
         return departmentService.addDepartment(department);
     }
 
-    //TODO validation for only staff
     @GetMapping(path = "getAll")
     public ResponseEntity<List<Department>> getAllDepartments() {
         return departmentService.getAllDepartments();
