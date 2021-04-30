@@ -1,6 +1,7 @@
 package com.fatih.hospitalappointment.controller;
 
 import com.fatih.hospitalappointment.model.dto.DoctorDto;
+import com.fatih.hospitalappointment.model.entity.AppointmentHours;
 import com.fatih.hospitalappointment.model.entity.Doctor;
 import com.fatih.hospitalappointment.model.enums.DoctorTitle;
 import com.fatih.hospitalappointment.service.DoctorService;
@@ -41,5 +42,11 @@ public class DoctorController {
     @GetMapping(path = "/getDoctorTitles")
     private ResponseEntity<List<DoctorTitle>> getDoctorTitles() {
         return doctorService.getDoctorTitles();
+    }
+
+    @GetMapping(path = "{doctorId}/getEmptyHours/{date}")
+    private ResponseEntity<List<AppointmentHours>> getDoctorEmptyHours(@PathVariable final int doctorId,
+                                                                       @PathVariable final String date) {
+        return doctorService.getDoctorEmptyHours(doctorId, date);
     }
 }
